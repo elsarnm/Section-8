@@ -1,0 +1,65 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "indent": "error",
+    "curly": ["error", "all"],
+    "lines-around-comment": [
+      "error",
+      {
+        "beforeBlockComment": true,
+        "afterBlockComment": true,
+        "beforeLineComment": true,
+        "afterLineComment": true,
+        "allowBlockStart": true,
+        "allowBlockEnd": true,
+        "allowObjectStart": true,
+        "allowObjectEnd": true,
+        "allowArrayStart": true,
+        "allowArrayEnd": true
+      }
+    ],
+    "max-len": ["error", { "code": 80, "ignoreUrls": true }],
+    "no-confusing-arrow": ["error", { "allowParens": false }],
+    "no-mixed-operators": "error",
+    "no-tabs": ["error", { "allowIndentationTabs": true }],
+    "no-unexpected-multiline": "error",
+    "quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": false }
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": false }
+    ],
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "any"
+        }
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "SequenceExpression",
+        "message": "The comma operator is confusing and a common mistake. Don’t use it!"
+      }
+    ]
+  }
+}
