@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginViaAPI', (
+  email = Cypress.env('userEmail'),
+  password = Cypress.env('userPassword')
+) => {
+  cy.request('POST', 'https://reqres.in/api/users/login', { 
+    username: email,
+    password,
+  }).then((response) => {
+    Cypress.Cookies.defaults({
+      preserve: ['session_id', response.body.sessionId],
+    })
+    Cypress.Cookies.defaults({
+      preserve: ['userId', response.body.userId],
+    })
+    Cypress.Cookies.defaults({
+      preserve: ['userName', response.body.userName],
+    })
+    cy.request('https://reqres.in/api/login')
+  })
+})
